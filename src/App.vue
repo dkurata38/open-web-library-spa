@@ -40,29 +40,33 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-navigation-drawer
-            v-model="drawer" temporary absolute>
-      <v-list>
-        <v-list-item v-for="(navigationItem, i) in navigationItems"
-          :key="i" link>
-          <v-list-item-icon>
-            <v-icon v-text="navigationItem.icon">
-            </v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <router-link v-bind:to="navigationItem.route" v-text="navigationItem.title">
-            </router-link>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item @click="dialog = true">
-          <v-list-item-icon><v-icon>mdi-login</v-icon></v-list-item-icon>
-          <v-list-item-content>LOGIN</v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <v-content>
       <v-container fluid>
         <router-view></router-view>
+        <v-navigation-drawer
+                v-model="drawer"
+                temporary
+                absolute
+                right
+        >
+          <v-list>
+            <v-list-item v-for="(navigationItem, i) in navigationItems"
+                         :key="i" link>
+              <v-list-item-icon>
+                <v-icon v-text="navigationItem.icon">
+                </v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <router-link v-bind:to="navigationItem.route" v-text="navigationItem.title">
+                </router-link>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item @click="dialog = true">
+              <v-list-item-icon><v-icon>mdi-login</v-icon></v-list-item-icon>
+              <v-list-item-content>LOGIN</v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
         <v-row justify="center">
           <v-dialog v-model="dialog" persistent max-width="600px">
             <v-card>
@@ -107,5 +111,15 @@ export default {
       dialog: false,
     };
   },
+  // methods: {
+  //   login: function() {
+  //
+  //   }
+  // }
 };
 </script>
+<style scoped>
+  a {
+    text-decoration: none;
+  }
+</style>
